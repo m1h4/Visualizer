@@ -1,0 +1,9 @@
+; Visualizer.def : Declares the module parameters.
+
+LIBRARY      "Visualizer.OCX"
+
+EXPORTS
+	DllCanUnloadNow     PRIVATE
+	DllGetClassObject   PRIVATE
+	DllRegisterServer   PRIVATE
+	DllUnregisterServer PRIVATE

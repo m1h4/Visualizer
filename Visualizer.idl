@@ -1,0 +1,74 @@
+// Visualizer.idl : type library source for ActiveX Control project.
+
+// This file will be processed by the MIDL compiler tool to
+// produce the type library (Visualizer.tlb) that will become a resource in
+// Visualizer.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(5B39FA11-A3A7-49B2-BE96-8767C55A7F62), version(1.0),
+  helpfile("Visualizer.hlp"),
+  helpstring("Visualizer Control"),
+  control ]
+library Visualizer
+{
+	importlib(STDOLE_TLB);
+
+	//  Primary dispatch interface for CVisualizerCtrl
+
+	[ uuid(825A1EE0-97B6-4EF2-AE7C-5491649EAD16),
+	  helpstring("Dispatch interface for Visualizer Control")]
+	dispinterface IVisualizer
+	{
+		//interface IBarr;
+		properties:
+		methods:
+		[id(1), helpstring("method Initialize")] VARIANT_BOOL Initialize([in] LONG resolution,[in] VARIANT_BOOL blur);
+		[id(2), helpstring("method Uninitialize")] VARIANT_BOOL Uninitialize(void);
+		[id(3), helpstring("method SetVisualization")] VARIANT_BOOL SetVisualization([in] LONG index);
+		[id(4), helpstring("method GetVisualizationCount")] LONG GetVisualizationCount(void);
+		[id(5), helpstring("method GetVisualizationName")] BSTR GetVisualizationName([in] LONG index);
+		[id(6), helpstring("method GetVisualization")] LONG GetVisualization(void);
+		[id(7), helpstring("method PackColor")] LONG PackColor(BYTE alpha, BYTE red, BYTE green, BYTE blue);
+		[id(8), helpstring("method UnpackColorAlpha")] BYTE UnpackColorAlpha(LONG color);
+		[id(9), helpstring("method UnpackColorRed")] BYTE UnpackColorRed(LONG color);
+		[id(10), helpstring("method UnpackColorGreen")] BYTE UnpackColorGreen(LONG color);
+		[id(11), helpstring("method UnpackColorBlue")] BYTE UnpackColorBlue(LONG color);
+		[id(12), helpstring("method GetColorBackground")] LONG GetColorBackground(void);
+		[id(13), helpstring("method SetColorBackground")] VARIANT_BOOL SetColorBackground([in] LONG color);
+		[id(14), helpstring("method GetColorTop")] LONG GetColorTop(void);
+		[id(15), helpstring("method SetColorTop")] VARIANT_BOOL SetColorTop([in] LONG color);
+		[id(16), helpstring("method GetColorTopEnd")] LONG GetColorTopEnd(void);
+		[id(17), helpstring("method SetColorTopEnd")] VARIANT_BOOL SetColorTopEnd([in] LONG color);
+		[id(18), helpstring("method GetColorBottom")] LONG GetColorBottom(void);
+		[id(19), helpstring("method SetColorBottom")] VARIANT_BOOL SetColorBottom([in] LONG color);
+		[id(20), helpstring("method GetColorBottomEnd")] LONG GetColorBottomEnd(void);
+		[id(21), helpstring("method SetColorBottomEnd")] VARIANT_BOOL SetColorBottomEnd([in] LONG color);
+		[id(22), helpstring("method GetColorPeak")] LONG GetColorPeak(void);
+		[id(23), helpstring("method SetColorPeak")] VARIANT_BOOL SetColorPeak([in] LONG color);
+	};
+
+	//  Event dispatch interface for CVisualizerCtrl
+
+	[ uuid(96A638C5-D627-4D5F-96F3-CD457773CC42),
+	  helpstring("Event interface for Visualizer Control") ]
+	dispinterface IVisualizerEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+	};
+
+	//  Class information for CVisualizerCtrl
+
+	[ uuid(6F398387-0A0B-42F0-A4E0-BCAF9EC88DE5),
+	  helpstring("Visualizer Control"), control ]
+	coclass Visualizer
+	{
+		[default] dispinterface IVisualizer;
+		[default, source] dispinterface IVisualizerEvents;
+	};
+
+};
